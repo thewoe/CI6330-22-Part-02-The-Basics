@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IndexScreen from './src/screens/IndexScreen';
 import ScreenOne from './src/screens/ScreenOne';
 import ScreenTwo from './src/screens/ScreenTwo';
+import AddItemScreen from './src/screens/AddItemScreen';
 
 const App = () => {
     const Stack = createNativeStackNavigator();
@@ -23,6 +24,11 @@ const App = () => {
                     name='ScreenTwo'
                     component={ScreenTwo}
                     options={{ title: 'Screen Two'}}
+                />
+                <Stack.Screen
+                    name='AddItemScreen'
+                    component={AddItemScreen}
+                    options={{ title: 'Add a new item'}}
                 />
             </Stack.Navigator>
         </NavigationContainer>

@@ -8,6 +8,7 @@ const ScreenTwo = ({navigation}) => {
             <ChildrenExample title='This is Screen Two'>
                 <NavigationButton screenName='Index' navigation={navigation} />
                 <NavigationButton screenName='ScreenOne' navigation={navigation} />
+                <NavigationButton screenName='AddItemScreen' navigation={navigation} />
             </ChildrenExample>
         </View>
     );

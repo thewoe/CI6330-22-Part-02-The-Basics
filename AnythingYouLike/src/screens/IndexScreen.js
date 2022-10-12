@@ -18,6 +18,7 @@ const IndexScreen = ({navigation}) => {
               <ListItem name='Bamm-Bamm' image={require('../../assets/bamm.jpg')} />
               <NavigationButton screenName='ScreenOne' navigation={navigation} />
               <NavigationButton screenName='ScreenTwo' navigation={navigation} />
+              <NavigationButton screenName='AddItemScreen' navigation={navigation} />
           </ScrollView>
       </SafeAreaView>
     );
