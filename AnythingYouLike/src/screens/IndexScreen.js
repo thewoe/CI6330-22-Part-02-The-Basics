@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import ListItem from '../components/ListItem';
+import NavigationButton from '../components/NavigationButton';
 
 const IndexScreen = ({navigation}) => {
     return (
@@ -8,32 +10,14 @@ const IndexScreen = ({navigation}) => {
           <StatusBar />
           <Text style={styles.heading}>Flintstones and Rubbles</Text>
           <ScrollView horizontal={false}>
-              <View style={styles.itemContainer}>
-                  <Text style={styles.nameText}>Fred</Text>
-                  <Image source={require('../../assets/fred.jpg')} style={styles.img} />
-              </View>
-              <View style={styles.itemContainer}>
-                  <Text style={styles.nameText}>Wilma</Text>
-                  <Image source={require('../../assets/wilma.png')} style={styles.img} />
-              </View>
-              <View style={styles.itemContainer}>
-                  <Text style={styles.nameText}>Pebbles</Text>
-                  <Image source={require('../../assets/pebbles.png')} style={styles.img} />
-              </View>
-              <View style={styles.itemContainer}>
-                  <Text style={styles.nameText}>Barney</Text>
-                  <Image source={require('../../assets/barney.jpg')} style={styles.img} />
-              </View>
-              <View style={styles.itemContainer}>
-                  <Text style={styles.nameText}>Bettie</Text>
-                  <Image source={require('../../assets/bettie.png')} style={styles.img} />
-              </View>
-              <View style={styles.itemContainer}>
-                  <Text style={styles.nameText}>Bamm-Bamm</Text>
-                  <Image source={require('../../assets/bamm.jpg')} style={styles.img} />
-              </View>
-              <Button title='Go to Screen One' onPress={() => navigation.navigate('ScreenOne')} />
-              <Button title='Go to Screen Two' onPress={() => navigation.navigate('ScreenTwo')} />
+              <ListItem name='Fred' image={require('../../assets/fred.jpg')} />
+              <ListItem name='Wilma' image={require('../../assets/wilma.png')} />
+              <ListItem name='Pebbles' image={require('../../assets/pebbles.png')} />
+              <ListItem name='Barney' image={require('../../assets/barney.jpg')} />
+              <ListItem name='Bettie' image={require('../../assets/bettie.png')} />
+              <ListItem name='Bamm-Bamm' image={require('../../assets/bamm.jpg')} />
+              <NavigationButton screenName='ScreenOne' navigation={navigation} />
+              <NavigationButton screenName='ScreenTwo' navigation={navigation} />
           </ScrollView>
       </SafeAreaView>
     );
@@ -50,22 +34,6 @@ const styles = StyleSheet.create({
         fontSize: 30, 
         fontWeight: 'bold', 
         color: 'green'
-    },
-    nameText: {
-        fontSize: 20, 
-        color: 'blue',
-        marginTop: 10
-    },
-    img: {
-        width: 250, 
-        height: 250
-    },
-    itemContainer: {
-      borderWidth: 1,
-      borderColor: 'black',
-      borderRadius: 4,
-      padding: 5,
-      marginVertical: 5,
     }
 });
 
