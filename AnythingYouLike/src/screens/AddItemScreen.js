@@ -2,28 +2,35 @@ import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { useState } from 'react';
 import NavigationButton from '../components/NavigationButton';
 
-const AddItemScreen = ({navigation}) => {
-    const [name, setName] = useState('');
+const AddItemScreen = ({navigation, route}) => {
+    const {callback} = route.params;
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
     return (
         <View>
-            <Text style={styles.textLabel}>Enter your name:</Text>
+            <Text style={styles.textLabel}>Enter a title:</Text>
             <TextInput 
                 style={styles.textInput}
-                placeholder='Type here'
-                value={name}
-                onChangeText={text => setName(text)}
-                multiline={true}
-                numberOfLines={4}
-                autoCapitalize='none'
-                autoCorrect={false}
+                placeholder='Type title here'
+                value={title}
+                onChangeText={text => setTitle(text)}
                 autoFocus={true}
-                keyboardType='email-address'
-                maxLength={100}
             />
-            <Text style={styles.textLabel}>Your name is {name}</Text>
-            <NavigationButton screenName='Index' navigation={navigation} />
-            <NavigationButton screenName='ScreenOne' navigation={navigation} />
-            <NavigationButton screenName='ScreenTwo' navigation={navigation} />
+            <Text style={styles.textLabel}>Enter your content:</Text>
+            <TextInput 
+                style={styles.textInput}
+                placeholder='Type content here'
+                value={content}
+                onChangeText={text => setContent(text)}
+                mutliline={true}
+            />
+            <Button
+                title='Submit Item'
+                onPress={() => { 
+                    callback(title, content);
+                    navigation.pop();
+                }}
+            />
         </View>
     );
 }
