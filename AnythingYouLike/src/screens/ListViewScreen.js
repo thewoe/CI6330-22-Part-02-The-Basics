@@ -1,5 +1,6 @@
 import { View, StyleSheet, Text, FlatList, Pressable } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
+import { actionTypes } from '../helpers/actionTypes';
 import { MaterialIcons } from '@expo/vector-icons';
 import NavigationButton from '../components/NavigationButton';
 
@@ -18,31 +19,52 @@ const dummyData = [
     }
 ];
 
+const reducer = (state, action) => {
+    switch (action.type) {
+        case actionTypes.create:
+            return [
+                ...state,
+                {
+                    id: Math.floor(Math.random() * 99999),
+                    title: action.payload.title,
+                    content: action.payload.content,
+                    date: new Date() 
+                }
+            ];
+        case actionTypes.update:
+            return state.map(item => {
+                if (item.id === action.payload.id) {
+                    return action.payload;
+                }
+                else {
+                    return item;
+                }
+            });
+        case actionTypes.delete:
+            return state.filter(item => item.id !== action.payload.id);
+        default:
+            return state;
+    };
+}
+
 const ListViewScreen = ({navigation}) => {
-    const [items, setItems] = useState(dummyData);
+    const [state, dispatch] = useReducer(reducer, dummyData);
     useEffect(() => {
         navigation.setOptions({
             headerRight: () => (
-                <Pressable onPress={() => navigation.navigate('AddItemScreen', {callback: addNewItem})}>
+                <Pressable onPress={() => navigation.navigate('AddItemScreen', {callback: (payload) => {
+                    dispatch({type: actionTypes.create, payload: payload});
+                }})}>
                     <MaterialIcons name='add' size={24} color='black' />
                 </Pressable>
             )
         })
-    }, [items]);
-    const addNewItem = (title, content) => {
-        setItems([...items,
-        {
-            id: Math.floor(Math.random() * 99999),
-            title: title,
-            content: content,
-            date: new Date()
-        }]);
-    }
+    }, [state]);
 
     return (
         <View>
             <FlatList
-                data={items}
+                data={state}
                 keyExtractor={e => e.id.toString()}
                 renderItem={({item}) => {
                     return (
