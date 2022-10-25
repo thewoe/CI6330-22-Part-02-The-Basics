@@ -2,10 +2,13 @@ import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { useState, useContext } from 'react';
 import ItemContext from '../contexts/ItemContext';
 
-const AddItemScreen = ({navigation}) => {
-    const { create } = useContext(ItemContext);
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+const EditItemScreen = ({navigation, route}) => {
+    const { id } = route.params
+    const { state, update } = useContext(ItemContext);
+    const currentEntry = state.find((item) => item.id === id);
+    const [title, setTitle] = useState(currentEntry.title);
+    const [content, setContent] = useState(currentEntry.content);
+    const [date, setDate] = useState(currentEntry.date);
     return (
         <View>
             <Text style={styles.textLabel}>Enter a title:</Text>
@@ -25,9 +28,9 @@ const AddItemScreen = ({navigation}) => {
                 mutliline={true}
             />
             <Button
-                title='Submit Item'
+                title='Edit Item'
                 onPress={() => { 
-                    create(title, content, () => navigation.pop());
+                    update(id, title, content, date, () => navigation.pop());
                 }}
             />
         </View>
@@ -48,4 +51,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AddItemScreen;
+export default EditItemScreen;
