@@ -15,6 +15,7 @@ const ViewItemScreen = ({route}) => {
             <NavigationButton screenName='ScreenOne' navigation={route.navigation} />
             <NavigationButton screenName='ScreenTwo' navigation={route.navigation} />
             <NavigationButton screenName='ListViewScreen' navigation={route.navigation} />
+            <NavigationButton screenName='CameraScreen' navigation={navigation} />
         </View>
     );
 }

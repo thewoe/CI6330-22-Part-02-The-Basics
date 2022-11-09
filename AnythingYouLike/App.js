@@ -8,6 +8,8 @@ import AddItemScreen from './src/screens/AddItemScreen';
 import EditItemScreen from './src/screens/EditItemScreen';
 import ListViewScreen from './src/screens/ListViewScreen';
 import ViewItemScreen from './src/screens/ViewItemScreen';
+import CameraScreen from './src/screens/CameraScreen';
+import CameraPhotoScreen from './src/screens/CameraPhotoScreen';
 
 const App = () => {
     const Stack = createNativeStackNavigator();
@@ -49,6 +51,16 @@ const App = () => {
                         name='ViewItemScreen'
                         component={ViewItemScreen}
                         options={{ title: 'View item' }}
+                    />
+                    <Stack.Screen
+                        name='CameraScreen'
+                        component={CameraScreen}
+                        options={{ title: 'Take a snap' }}
+                    />
+                    <Stack.Screen
+                        name='CameraPhotoScreen'
+                        component={CameraPhotoScreen}
+                        options={{ title: 'Your Picture' }}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

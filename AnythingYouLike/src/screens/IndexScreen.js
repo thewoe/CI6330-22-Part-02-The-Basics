@@ -19,6 +19,7 @@ const IndexScreen = ({navigation}) => {
               <NavigationButton screenName='ScreenOne' navigation={navigation} />
               <NavigationButton screenName='ScreenTwo' navigation={navigation} />
               <NavigationButton screenName='ListViewScreen' navigation={navigation} />
+              <NavigationButton screenName='CameraScreen' navigation={navigation} />
           </ScrollView>
       </SafeAreaView>
     );
