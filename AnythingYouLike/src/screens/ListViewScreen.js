@@ -64,6 +64,8 @@ const ListViewScreen = ({navigation}) => {
             <NavigationButton screenName='ScreenOne' navigation={navigation} />
             <NavigationButton screenName='ScreenTwo' navigation={navigation} />
             <NavigationButton screenName='CameraScreen' navigation={navigation} />
+            <NavigationButton screenName='SearchAPIScreen' navigation={navigation} />
+            <NavigationButton screenName='YelpSearchAPIScreen' navigation={navigation} />
         </View>
     );
 }

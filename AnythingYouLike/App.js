@@ -10,6 +10,9 @@ import ListViewScreen from './src/screens/ListViewScreen';
 import ViewItemScreen from './src/screens/ViewItemScreen';
 import CameraScreen from './src/screens/CameraScreen';
 import CameraPhotoScreen from './src/screens/CameraPhotoScreen';
+import SearchAPIScreen from './src/screens/SearchAPIScreen';
+import YelpSearchAPIScreen from './src/screens/YelpSearchAPIScreen';
+import YelpSearchAPIItemScreen from './src/screens/YelpSearchAPIItemScreen';
 
 const App = () => {
     const Stack = createNativeStackNavigator();
@@ -61,6 +64,21 @@ const App = () => {
                         name='CameraPhotoScreen'
                         component={CameraPhotoScreen}
                         options={{ title: 'Your Picture' }}
+                    />
+                    <Stack.Screen
+                        name='SearchAPIScreen'
+                        component={SearchAPIScreen}
+                        options={{ title: 'Search an API with HTTP' }}
+                    />
+                    <Stack.Screen
+                        name='YelpSearchAPIScreen'
+                        component={YelpSearchAPIScreen}
+                        options={{ title: 'Search a Yelp API with HTTP' }}
+                    />
+                    <Stack.Screen
+                        name='YelpSearchAPIItemScreen'
+                        component={YelpSearchAPIItemScreen}
+                        options={{ title: 'Item From API' }}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
